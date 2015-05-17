@@ -76,6 +76,9 @@ lives.textContent =  "Guesses left: " + guessesLeft;
 if (guessesLeft == 0){
   alert ("The World Dies");
 }
+if (dashedWord.join("") == randomWord) {
+  alert ("you win the earth is saved");
+}
 });
 }
 
