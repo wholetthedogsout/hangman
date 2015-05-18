@@ -14,11 +14,14 @@ var hangmanWords = [
 var frm = document.querySelector('.guess-form');
 var letter = document.querySelector('.guess-entry');
 var guessed = document.querySelector('.guess-group');
-var display = document.querySelector(".word")
-var lives = document.querySelector(".lives")
+var display = document.querySelector(".word");
+var lives = document.querySelector(".lives");
+var color = document.querySelector("img");
+var losingword = document.querySelector("thewordwas");
 var dashedWord = [];
 var guessedList = [];
 var counter = 0;
+color.style.backgroundColor = "#0A00F6";
 
 
 
@@ -72,15 +75,45 @@ letter.value = '';
 console.log(dashedWord);
 display.textContent = dashedWord.join(" ");
 guessed.textContent = guessedList.join(", ");
-lives.textContent =  "Guesses left: " + guessesLeft;
-if (guessesLeft == 0){
-  alert ("The World Dies");
+lives.textContent =  "Lives left: " + guessesLeft;
+color.style.backgroundColor = "red";
+
+if (guessesLeft == 8){
+  color.style.backgroundColor = "#0A00F6";
+}
+if (guessesLeft == 7){
+  color.style.backgroundColor = "#2900D6";
+}
+if (guessesLeft == 6){
+  color.style.backgroundColor = "#4E00AF";
+}
+if (guessesLeft == 5){
+  color.style.backgroundColor = "#61019F";
+}
+if (guessesLeft == 4){
+  color.style.backgroundColor = "#81027C";
+}
+if (guessesLeft == 3){
+  color.style.backgroundColor = "#A80158";
+}
+if (guessesLeft == 2){
+  color.style.backgroundColor = "#CE0132";
+}
+if (guessesLeft == 1){
+  color.style.backgroundColor = "#F70008";
+}
+
+if (guessesLeft == 0 && dashedWord.join("") !== randomWord){
+  window.location="losingpage.html";
+
 }
 if (dashedWord.join("") == randomWord) {
-  alert ("you win the earth is saved");
+  window.location="winningpage.html";
 }
 });
+losingword.textContent = randomWord;
 }
+
 
 checkAnswer();
 
