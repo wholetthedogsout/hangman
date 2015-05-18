@@ -111,7 +111,6 @@ if (dashedWord.join("") == randomWord) {
   window.location="winningpage.html";
 }
 });
-losingword.textContent = randomWord;
 }
 
 
@@ -124,7 +123,7 @@ function compareLettters () {
     dashedWord[i] = w;
     return true;
     }
-  }
+}
 }
 
 function guessedLetters () {
@@ -135,14 +134,3 @@ function guessedLetters () {
     counter++;
   }
 }
-
-
-
-//function guessedLetters () {
- //for (var i  = 1; i < guessedList.length; ++i){
-   //var x = guessedList[i];
-   //if (letter.value !== x) {
-   //}
-   //guessedList.push(letter.value);
- //}
-//}
