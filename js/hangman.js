@@ -66,70 +66,71 @@ function splitRandom () {
 splitRandom ();
 
 function checkAnswer () {
-frm.addEventListener('submit', function (e) {
-var guessesLeft = (8-counter);
-e.preventDefault();
-compareLettters();
-guessedLetters ();
-letter.value = '';
-console.log(dashedWord);
-display.textContent = dashedWord.join(" ");
-guessed.textContent = guessedList.join(", ");
-lives.textContent =  "Lives left: " + guessesLeft;
-color.style.backgroundColor = "red";
+  frm.addEventListener('submit', function (e) {
+    var guessesLeft = (8-counter);
+    e.preventDefault();
+    compareLettters();
+    guessedLetters ();
+    letter.value = '';
+    console.log(dashedWord);
+    display.textContent = dashedWord.join(" ");
+    guessed.textContent = guessedList.join(", ");
+    lives.textContent =  "Lives left: " + guessesLeft;
+    color.style.backgroundColor = "red";
 
-if (guessesLeft == 8){
-  color.style.backgroundColor = "#0A00F6";
-}
-if (guessesLeft == 7){
-  color.style.backgroundColor = "#2900D6";
-}
-if (guessesLeft == 6){
-  color.style.backgroundColor = "#4E00AF";
-}
-if (guessesLeft == 5){
-  color.style.backgroundColor = "#61019F";
-}
-if (guessesLeft == 4){
-  color.style.backgroundColor = "#81027C";
-}
-if (guessesLeft == 3){
-  color.style.backgroundColor = "#A80158";
-}
-if (guessesLeft == 2){
-  color.style.backgroundColor = "#CE0132";
-}
-if (guessesLeft == 1){
-  color.style.backgroundColor = "#F70008";
-}
+    if (guessesLeft == 8){
+      color.style.backgroundColor = "#0A00F6";
+    }
+    if (guessesLeft == 7){
+      color.style.backgroundColor = "#2900D6";
+    }
+    if (guessesLeft == 6){
+      color.style.backgroundColor = "#4E00AF";
+    }
+    if (guessesLeft == 5){
+      color.style.backgroundColor = "#61019F";
+    }
+    if (guessesLeft == 4){
+      color.style.backgroundColor = "#81027C";
+    }
+    if (guessesLeft == 3){
+      color.style.backgroundColor = "#A80158";
+    }
+    if (guessesLeft == 2){
+      color.style.backgroundColor = "#CE0132";
+    }
+    if (guessesLeft == 1){
+      color.style.backgroundColor = "#F70008";
+    }
 
-if (guessesLeft == 0 && dashedWord.join("") !== randomWord){
-  window.location="losingpage.html";
+    if (guessesLeft == 0 && dashedWord.join("") !== randomWord){
+      window.location="losingpage.html";
 
-}
-if (dashedWord.join("") == randomWord) {
-  window.location="winningpage.html";
-}
-});
+    }
+    if (dashedWord.join("") == randomWord) {
+      window.location="winningpage.html";
+    }
+  });
 }
 
 
 checkAnswer();
 
 function compareLettters () {
+  var matchCount = 0;
   for (var i = 0; i < checkArr.length; ++i){
     var w = checkArr[i];
     if (letter.value == w) {
     dashedWord[i] = w;
-    return true;
+    ++matchCount;
     }
-}
+  }
+
+  return matchCount;
 }
 
 function guessedLetters () {
-  if (compareLettters() == true){
-  }
-  else {
+  if (!compareLettters()) {
     guessedList.push(letter.value);
     counter++;
   }
